@@ -1,0 +1,28 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+    working_directory: ~/secret-santa
+    steps:
+      - checkout
+      - restore_cache:
+          key: secret-santa-{{ checksum "pom.xml" }}
+      - run: mvn --fail-never dependency:go-offline || true
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: secret-santa-{{ checksum "pom.xml" }}
+
+      - run:
+          name: Build Secret Santa
+          command: |
+            mvn clean install
+            mvn surefire-report:report-only
+
+      - store_test_results:
+          path: secret-santa/target/surefire-reports
+
+      - store_artifacts:
+          path: secret-santa/target/site
+          destination: secret-santa/reports
