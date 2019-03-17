@@ -1,5 +1,7 @@
 package com.sergeyvolkodav.secretsanta.model;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -9,10 +11,12 @@ public class Member implements RelationEntity {
     private final String id;
     private final String name;
     private Integer age;
+    private List<Edge> relation;
     private NavigableMap<Integer, String> giftPicksHistory;
 
     public Member(String id, String name) {
         this.giftPicksHistory = new TreeMap<>();
+        this.relation = new LinkedList<>();
 
         this.id = id;
         this.name = name;
@@ -38,10 +42,27 @@ public class Member implements RelationEntity {
         return giftPicksHistory;
     }
 
+    @Override
+    public List<Edge> getRelation() {
+        return relation;
+    }
+
+    @Override
+    public void addRelation(Edge edge) {
+        this.relation.add(edge);
+    }
+
     public void putPicksHistory(Integer year, String familyMemberId) {
         giftPicksHistory.put(year, familyMemberId);
     }
 
+    public boolean isImmediateTo(Member destinationMember) {
+        if (destinationMember == null) {
+            return false;
+        }
+        return this.getRelation().stream()
+                .anyMatch(edge -> destinationMember.equals(edge.getMember()));
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,7 +82,6 @@ public class Member implements RelationEntity {
         return "Member{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", age=" + age +
                 ", giftPicksHistory=" + giftPicksHistory +
                 '}';
     }

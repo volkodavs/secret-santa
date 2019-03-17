@@ -1,6 +1,5 @@
 package com.sergeyvolkodav.secretsanta;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;

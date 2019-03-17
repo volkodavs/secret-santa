@@ -33,3 +33,9 @@ That algorithm allows building a Secret Santa pair in O(n) in runtime and O(n) f
 I added a sliding window algorithm that store history for the last three years in a pair year/family member. 
 
 <img width="618" alt="sliding window algorithm" src="https://user-images.githubusercontent.com/4140597/54473875-8f579a80-47d5-11e9-8b80-8c42897e5a51.png">
+
+#### Part three
+
+To store family relations, I used a weighted directed graph.
+
+<img width="834" alt="weighted directed graph representation" src="https://user-images.githubusercontent.com/4140597/54473703-3b4bb680-47d3-11e9-993f-23b5bebfab23.png">
