@@ -17,7 +17,6 @@ import com.sergeyvolkodav.secretsanta.exceptions.SecretSantaException;
 import com.sergeyvolkodav.secretsanta.model.Member;
 import org.junit.Test;
 
-
 public class PartOneTest {
 
     @Test(expected = SecretSantaException.class)
@@ -33,7 +32,7 @@ public class PartOneTest {
         members.add(new Member(java.util.UUID.randomUUID().toString(), "Dad"));
         members.add(new Member(java.util.UUID.randomUUID().toString(), "Brother"));
 
-        SecretSanta secretSanta = new PartOne(members);
+        SecretSanta<Member> secretSanta = new PartOne(members);
 
         Map<Member, Member> pairs = secretSanta.getPairs();
 
@@ -48,7 +47,7 @@ public class PartOneTest {
         members.add(mom);
         Member dad = new Member(java.util.UUID.randomUUID().toString(), "Dad");
         members.add(dad);
-        SecretSanta secretSanta = new PartOne(members);
+        SecretSanta<Member> secretSanta = new PartOne(members);
 
         Map<Member, Member> pairs = secretSanta.getPairs();
 
@@ -63,7 +62,7 @@ public class PartOneTest {
         members.add(new Member(java.util.UUID.randomUUID().toString(), "Dad"));
         members.add(new Member(java.util.UUID.randomUUID().toString(), "Brother"));
         members.add(new Member(java.util.UUID.randomUUID().toString(), "Me"));
-        SecretSanta secretSanta = new PartOne(members);
+        SecretSanta<Member> secretSanta = new PartOne(members);
 
         Map<Member, Member> pairs = secretSanta.getPairs();
 
@@ -78,7 +77,7 @@ public class PartOneTest {
                 java.util.UUID.randomUUID().toString())).limit(42)
                 .collect(Collectors.toList());
 
-        SecretSanta secretSanta = new PartOne(members);
+        SecretSanta<Member> secretSanta = new PartOne(members);
 
         Map<Member, Member> pairs = secretSanta.getPairs();
 

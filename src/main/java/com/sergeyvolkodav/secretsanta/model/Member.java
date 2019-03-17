@@ -4,7 +4,7 @@ import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.TreeMap;
 
-public class Member {
+public class Member implements RelationEntity {
 
     private final String id;
     private final String name;
@@ -42,6 +42,7 @@ public class Member {
         giftPicksHistory.put(year, familyMemberId);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,6 +61,7 @@ public class Member {
         return "Member{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 ", giftPicksHistory=" + giftPicksHistory +
                 '}';
     }

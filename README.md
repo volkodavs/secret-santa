@@ -28,3 +28,8 @@ I have introduced random shift index for pair family member candidate.
 That algorithm allows building a Secret Santa pair in O(n) in runtime and O(n) for memory complexity  
 <img width="547" alt="Part One Algorithm" src="https://user-images.githubusercontent.com/4140597/54382056-10ece280-4687-11e9-86c2-f7b6d134dbe7.png">
 
+#### Part two 
+
+I added a sliding window algorithm that store history for the last three years in a pair year/family member. 
+
+<img width="618" alt="sliding window algorithm" src="https://user-images.githubusercontent.com/4140597/54473875-8f579a80-47d5-11e9-8b80-8c42897e5a51.png">

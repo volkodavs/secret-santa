@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.Predicate;
 
-import com.sergeyvolkodav.secretsanta.exceptions.ErrorCode;
 import com.sergeyvolkodav.secretsanta.exceptions.SecretSantaException;
 import com.sergeyvolkodav.secretsanta.model.Member;
 
-public class PartOne implements SecretSanta {
+public class PartOne implements SecretSanta<Member> {
 
     private List<Member> members;
 
@@ -20,7 +20,7 @@ public class PartOne implements SecretSanta {
     @Override
     public Map<Member, Member> getPairs() {
         if (members == null || members.isEmpty()) {
-            throw new SecretSantaException("Family members is null or empty", ErrorCode.INVALID_OPERATION);
+            throw new SecretSantaException("Family members is null or empty");
         }
 
         int familySize = members.size();
@@ -32,6 +32,11 @@ public class PartOne implements SecretSanta {
             familyPair.put(members.get(i), members.get(pairMemberIndex));
         }
         return familyPair;
+    }
+
+    @Override
+    public Map<Member, Member> getPairs(Predicate<Member> filter) {
+        throw new UnsupportedOperationException("Get Santa Secret pairs with predicates does not supported by this algorithm");
     }
 
     private int getShiftIndex(int familySize) {
