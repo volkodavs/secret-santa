@@ -17,7 +17,7 @@
         <!-- Application dependencies -->
         <junit.verison>4.12</junit.verison>
         <assertj.version>3.11.1</assertj.version>
-        <slf4j.version>1.7.26</slf4j.version>
+        <slf4j.version>1.7.36</slf4j.version>
         <logback.version>1.2.7</logback.version>
 
         <!-- Maven plugins -->
